@@ -9,7 +9,7 @@ const Header = ({modalVisible, setModalVisible}) => {
         <div className="container flex flex-row mx-auto items-center justify-between p-2">
           <Link href="" className="flex flex-row items-center text-3xl">
             <div>
-              <Image src="/assets/images/favicon.png" alt="log image" width={70} height={70}/>
+              <Image src="/assets/images/nft4.png " alt="log image" width={70} height={70} className="rounded-full"/>
             </div>
             <div className="ml-2">
               NFT SCRAPING
