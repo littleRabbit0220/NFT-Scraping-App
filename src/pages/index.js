@@ -1,13 +1,16 @@
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import MainContent from "@/components/MainContent"
 import MenuModal from "@/components/MenuModal"
+import NavBar from "@/components/NavBar"
 
 export default function Home() {
+  const [ modalVisible, setModalVisible ] = useState(false);
   return (
     <>
-      <header className="sticky z-10">
-        <div className="p-2">
+      <header>
+        <div className="p-2 sticky z-50 bg-slate-100">
           <div className="container flex flex-row mx-auto items-center justify-between p-2">
             <Link href="" className="flex flex-row items-center text-3xl">
               <div>
@@ -19,30 +22,11 @@ export default function Home() {
             </Link>
             <nav className="text-xl">
               <div>
-                <ul className="flex flex-row items-center hidden sm:flex">
-                  <li className="p-2">
-                    <Link href="/collections">
-                      Collections
-                    </Link>
-                  </li>
-                  <li className="p-2">
-                    <Link href="/news">
-                      News
-                    </Link>
-                  </li>
-                  <li className="p-2">
-                    <Link href="/contact">
-                      Contact Us
-                    </Link>
-                  </li>
-                  <li className="p-2">
-                    <Link href="/about">
-                      About Us
-                    </Link>
-                  </li>
-                </ul>
+                <NavBar classNames={"flex flex-row items-center hidden sm:flex"}/>
                 <div className="p-2 sm:hidden">
-                  <button type="button" className=""><i className="fa fa-bars"/></button>
+                  <button type="button" className="" onClick={()=>setModalVisible(!modalVisible)}>
+                    {modalVisible? (<i className="fa fa-close"/>):(<i className="fa fa-bars"/>)}
+                  </button>
                 </div>
               </div>
             </nav>
@@ -50,9 +34,12 @@ export default function Home() {
         </div>
       </header>
       <main>
-        <MainContent/>
+        <div>
+          <MainContent modalVisible={modalVisible}/>
+          {modalVisible && (<MenuModal/>)}
+        </div>
       </main>
-      <MenuModal/>
+      
     </>
   )
 }
