@@ -6,13 +6,15 @@ import Footer from "@/components/Footer";
 export default function Home() {
   const [ modalVisible, setModalVisible ] = useState(false);
   return (
-    <>
+    <div>
       <Header 
         modalVisible={modalVisible} 
         setModalVisible={(visible)=>setModalVisible(visible)}
       />
-      <MainContent modalVisible={modalVisible}/>
+      <MainContent 
+        modalVisible={modalVisible}
+      />
       <Footer/>
-    </>
+    </div>
   )
 }
