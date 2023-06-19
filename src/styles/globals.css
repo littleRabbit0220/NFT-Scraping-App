@@ -25,3 +25,22 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+.react-calendar__tile--active {
+ border-radius: 15px;
+}
+.react-calendar button:enabled:hover {
+  border-radius: 10px;
+  background-color: yellow;
+}
+.react-calendar__navigation {
+  font-size: 20px;
+  color:dodgerblue;
+  font-weight: bold;
+}
+.react-calendar__month-view__weekdays{
+  font-weight: bold;
+}
+.react-calendar__month-view__weekdays abbr{
+  text-decoration: none;
+  font-size: 18px;
+}
