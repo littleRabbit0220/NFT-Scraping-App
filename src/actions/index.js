@@ -1,22 +1,19 @@
-import axios from 'axios';
+import * as cheerio from 'cheerio';
 import config from '../config/index'
 
-const corsProxy = 'https://cors-anywhere.herokuapp.com/';
-
-
 export const getData = (date) => {
-
-  return new Promise((resolve, reject) => {
-    fetch(corsProxy + config.scraping_host_url, {
-      method: 'get'
+  return new Promise(async(resolve, reject) => {
+    const response = await fetch(config.cors_proxy_url + config.scraping_host_url, {
+      method: 'get',
+      headers: {
+        "Content-Type": "application/json"
+      }
     })
-      .then(res => {
-        console.log(res.data, 'data')
-        resolve(res.data)
-      })
-      .catch(err =>  {
-        console.log(err, 'error')
-        reject(err)
-      })
+  if(response.ok) {
+    const data = await response.text();
+    const $ = cheerio.load(data);
+  } else {
+    reject('error');
+  }
   });
 }
