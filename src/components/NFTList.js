@@ -5,7 +5,7 @@ import data from './data.json';
 const months = [
   "January",
   "Feburary",
-  "Martch",
+  "March",
   "April",
   "May",
   "June",

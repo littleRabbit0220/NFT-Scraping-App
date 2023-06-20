@@ -27,10 +27,12 @@ body {
 }
 .react-calendar__tile--active {
  border-radius: 15px;
+ background-color: dodgerblue;;
 }
-.react-calendar button:enabled:hover {
+.react-calendar__month-view__weekdays .react-calendar button:enabled:hover {
   border-radius: 10px;
   background-color: yellow;
+  color:red;
 }
 .react-calendar__navigation {
   font-size: 20px;
@@ -43,4 +45,5 @@ body {
 .react-calendar__month-view__weekdays abbr{
   text-decoration: none;
   font-size: 18px;
+
 }
