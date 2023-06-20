@@ -1,6 +1,8 @@
 import moment from 'moment';
 import NFTListItem from './NFTListItem';
 import data from './data.json';
+import { useContext } from 'react';
+import { AppContext } from '@/context/ContextProvider';
 
 const months = [
   "January",
@@ -18,6 +20,7 @@ const months = [
 ];
 
 const NFTList = ({currentDate}) => {
+  const { state } = useContext(AppContext);
   return (
     <div >
      <div className='flex flex-row justify-center'>
@@ -29,7 +32,7 @@ const NFTList = ({currentDate}) => {
       </div>
      </div>
       <div className='grid grid-cols-2 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 gap-4'>
-        {data.map((item, index)=> (
+        {state?.data.map((item, index)=> (
           <div key={index}>
             <NFTListItem item={item}/>
           </div>

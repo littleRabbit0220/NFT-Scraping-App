@@ -3,14 +3,23 @@ import MenuModal from "./MenuModal";
 import NFTList from './NFTList';
 import Navigation from "./Navigation";
 import Search from "./Search";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AppContext } from "@/context/ContextProvider";
 import DatePicker from "./DatePicker";
+import { getData } from "@/actions";
 
 const MainContent = ({modalVisible}) => {
   const { state } = useContext(AppContext);
   const [ calendarVisible, setCalendarVislble ] = useState(false);
   const [ currentDate, setCurrentDate ] = useState(new Date(Date.now()));
+
+  useEffect(() => {
+    if(currentDate !== undefined && currentDate !== null) {
+      getData(currentDate)
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
+    }
+  }, [currentDate]);
 
   return (
     <main>
