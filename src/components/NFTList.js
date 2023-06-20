@@ -1,7 +1,8 @@
 import moment from 'moment';
+import cloneDeep from 'lodash/cloneDeep';
 import NFTListItem from './NFTListItem';
 import data from './data.json';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '@/context/ContextProvider';
 
 const months = [
@@ -21,6 +22,15 @@ const months = [
 
 const NFTList = ({currentDate}) => {
   const { state } = useContext(AppContext);
+  const [ list, setList ] = useState([]);
+  
+  useEffect(() => {
+    if(typeof state.search === 'string') {
+      let temp = cloneDeep(state.data);
+      temp = temp.filter((item) => item.name.indexOf(state.search)>=0);
+      setList(cloneDeep(temp));
+    }
+  }, [state.search])
   return (
     <div >
      <div className='flex flex-row justify-center'>
@@ -32,7 +42,7 @@ const NFTList = ({currentDate}) => {
       </div>
      </div>
       <div className='grid grid-cols-2 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 gap-4'>
-        {state?.data.map((item, index)=> (
+        {list&& list.map((item, index)=> (
           <div key={index}>
             <NFTListItem item={item}/>
           </div>
