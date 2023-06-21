@@ -16,7 +16,7 @@ const DatePicker = ({calendarVisible, setCalendarVisible, currentDate, setCurren
       />
       <Calendar 
         className={
-          classnames("absolute shadow-md shadow-slate-500 rounded-2xl border border-white transition  delay-150",
+          classnames("absolute shadow-md shadow-slate-500 rounded-2xl border border-white transition -z-10 delay-150",
             {"opacity-0":!calendarVisible,"opacity-1":calendarVisible,"bg-slate-700":state.viewMode}
           )
         }

@@ -13,12 +13,14 @@ const MainContent = ({modalVisible}) => {
   const { state , setData } = useContext(AppContext);
   const [ calendarVisible, setCalendarVislble ] = useState(false);
   const [ currentDate, setCurrentDate ] = useState(new Date(Date.now()));
+  const [ nftData, setNftData ] = useState([]);
 
   useEffect(() => {
     if(currentDate !== undefined && currentDate !== null) {
       getData(currentDate)
       .then(data => {
         setData(cloneDeep(data));
+        setNftData(cloneDeep(data));
       })
       .catch(err => console.log(err));
     }
@@ -40,14 +42,20 @@ const MainContent = ({modalVisible}) => {
               setCurrentDate={(date)=>setCurrentDate(date)}/>
             <Search viewMode={state.viewMode}/>
           </div>  
-          <div className="flex flex-row justify-between items-center">
+          <div className="">
             {/* <div className="p-5 cursor-pointer hover:text-blue-500 hidden md:block"><i className="fa fa-arrow-circle-left" style={{fontSize:50}}></i></div> */}
-            <NFTList
-              currentDate={currentDate}
-            />
+            {nftData&& nftData.map((item, index) => (
+              <div key={index}>
+                <NFTList
+                  currentDate={currentDate}
+                  data={item}
+                  index = {index}
+                />
+              </div>
+            ))}
             {/* <div className="p-5 cursor-pointer hover:text-blue-500 hidden md:block"><i className="fa fa-arrow-circle-right" style={{fontSize:50}}></i></div> */}
           </div>
-          <Navigation/>
+        {/* <Navigation/> */}
         </div>
         {modalVisible && (<MenuModal/>)}
       </div>

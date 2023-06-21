@@ -15,8 +15,39 @@ export const getData = (date) => {
     const data = await response.text();
     const $ = cheerio.load(data);
     let temp = [];
-    $('.my-2').not('.w-full').children().eq(1).children().eq(0).children().each((i, el)=> {
-      temp.push({url:$(el).children('a').eq(0).attr('href'), name: $(el).find('h4').eq(0).text(), img: $(el).find('img').eq(0).attr('src')});
+    
+    $('.my-2').not('.w-full').children().each((index, el) => {
+      let item = [];
+      if(index % 2 === 1) {
+        $(el).children().eq(0).children().each((index2, el2) => {
+          item.push({
+            url:$(el2).children('a').eq(0).attr('href'), 
+            name: $(el2).find('h4').eq(0).text(), 
+            img: $(el2).find('img').eq(0).attr('src'),
+            crypto:$(el2).find('h4').eq(0).next().children().eq(0).children().eq(0).text(),
+            date:  $(el2).find('blockquote').children().eq(0).children().eq(1).children().eq(1).text(),
+            timezone: $(el2).children().eq(1).children().eq(1).children().eq(1).children().eq(1).children().length===3?(
+              $(el2).children().eq(1).children().eq(1).children().eq(1).children().eq(1).children().eq(0).children().eq(2).children().eq(1).children().eq(0).text()):(
+                $(el2).children().eq(1).children().eq(1).children().eq(1).children().eq(1).children().eq(1).children().eq(2).children().eq(0).text()
+                ),
+            twitter: $(el2).children().eq(1).children().eq(1).children().eq(1).children().eq(1).children().length===3?(
+              $(el2).children().eq(1).children().eq(1).children().eq(1).children().eq(1).children().eq(1).text()):(
+                $(el2).children().eq(1).children().eq(1).children().eq(1).children().eq(1).children().eq(2).find('a').eq(0).attr('href')),
+            value: $(el2).children().eq(1).children().eq(1).children().eq(1).children().eq(1).children().length===3?(
+              $(el2).children().eq(1).children().eq(1).children().eq(1).children().eq(1).children().eq(1).children().eq(2).children().eq(1).text()):(
+                $(el2).children().eq(1).children().eq(1).children().eq(1).children().eq(1).children().eq(2).children().eq(1).children().eq(1).text()
+                ),
+            discord: $(el2).children().eq(1).children().eq(1).children().eq(1).children().eq(1).children().length===3?(
+              $(el2).children().eq(1).children().eq(1).children().eq(1).children().eq(1).children().eq(2).text()):(
+                $(el2).children().eq(1).children().eq(1).children().eq(1).children().eq(1).children().eq(3).find('a').eq(0).attr('href')),
+            amount: $(el2).children().eq(1).children().eq(1).children().eq(1).children().eq(1).children().length===3?(
+              $(el2).children().eq(1).children().eq(1).children().eq(1).children().eq(1).children().eq(2).children().eq(1).text()):(
+                $(el2).children().eq(1).children().eq(1).children().eq(1).children().eq(1).children().eq(3).children().eq(1).text()),
+          });
+        })
+        if(item.length !== 0) temp.push(item);
+      }
+      
     });
     resolve(temp);
 
