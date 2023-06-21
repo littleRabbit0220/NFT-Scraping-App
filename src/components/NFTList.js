@@ -45,7 +45,7 @@ const NFTList = ({currentDate, index, data}) => {
      <div className='flex flex-row'>
       <div className={classnames('mb-2 rounded-xl p-2 inline-block', {'bg-white text-slate-900':!state.viewMode, 'bg-slate-700':state.viewMode})}>
         <div className='text-2xl'>
-          {months[parseInt(moment(currentDate).format("MM"))]}  {moment(currentDate).format("DD")+index}
+          {months[parseInt(moment(currentDate).format("MM"))-1]}  {parseInt(moment(currentDate).format("DD"))+index}
         </div>
         <div className='text-xl text-center'>{data&&data.length} drops</div>
       </div>
