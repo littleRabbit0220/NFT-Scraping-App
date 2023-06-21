@@ -6,7 +6,7 @@ import classnames from 'classnames';
 const NFTListItem = ({item}) => {
   const { state } = useContext(AppContext);
   return (
-    <div className={classnames("p-3 rounded-xl md:h-[400px] sm:h-[330px] shadow hover:transform hover:translate-y-2 transition ease-in-out delay-150 hover:shadow-inner hover:shadow-slate-500",{"bg-white":!state.viewMode,"bg-slate-700":state.viewMode})}>
+    <div className={classnames("p-3 rounded-xl md:h-[450px] sm:h-[330px] shadow hover:transform hover:translate-y-2 transition ease-in-out delay-150 hover:shadow-inner hover:shadow-slate-500",{"bg-white":!state.viewMode,"bg-slate-700":state.viewMode})}>
       <Link href={item.url?item.url:""} className="w-full h-full inline-block">
         <div className="flex flex-col justify-between w-full h-full">
           <div className="w-full">
