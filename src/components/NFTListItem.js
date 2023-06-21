@@ -13,7 +13,7 @@ const NFTListItem = ({item}) => {
           alt="nft image" 
           className=" object-cover w-full  rounded-xl" 
         />
-        <h3 className="text-xl text-center p-2  sm:h-[200px] h-[150px]">
+        <h3 className="text-xl text-center p-2  sm:h-[150px] h-[100px]">
         {item.name}
         </h3>
       </Link>

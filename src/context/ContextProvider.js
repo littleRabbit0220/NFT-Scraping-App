@@ -7,7 +7,7 @@ export const AppContext = createContext();
 export default function ContextProvider({children}) {
   const [ state, setState ] = useState(
     {
-      viewMode: false, 
+      viewMode: true, 
       data: data1, 
       search: '',   
       currentPage: 1, 

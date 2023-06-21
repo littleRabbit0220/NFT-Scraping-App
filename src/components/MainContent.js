@@ -27,7 +27,7 @@ const MainContent = ({modalVisible}) => {
   return (
     <main>
       <div className={classnames({"bg-slate-900 text-white": state.viewMode})}>
-        <div className={classnames("z-10 min-h-[1015px] container mx-auto p-4",{"h-0": modalVisible})}>
+        <div className={classnames("z-10 sm:min-h-[1015px] container mx-auto p-4",{"h-0": modalVisible})}>
           <div className="py-5">
             <h3 className="text-3xl py-2">Future NFTs</h3>
             <p className="text-2xl py-2">NFT Scraping App shows nfts that will appear in the future.</p>
