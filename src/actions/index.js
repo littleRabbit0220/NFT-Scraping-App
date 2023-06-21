@@ -16,7 +16,7 @@ export const getData = (date) => {
     const $ = cheerio.load(data);
     let temp = [];
     $('.my-2').not('.w-full').children().eq(1).children().eq(0).children().each((i, el)=> {
-      temp.push({url:$(el).children('a').eq(0).attr('href'), name: $(el).find('h4').eq(0).text(), img: $(el).find('img').eq(1).attr('src')});
+      temp.push({url:$(el).children('a').eq(0).attr('href'), name: $(el).find('h4').eq(0).text(), img: $(el).find('img').eq(0).attr('src')});
     });
     resolve(temp);
 

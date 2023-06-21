@@ -9,7 +9,7 @@ const NFTListItem = ({item}) => {
     <div className={classnames("p-3 rounded-xl md:h-[400px] sm:h-[330px] shadow hover:transform hover:translate-y-2 transition ease-in-out delay-150 hover:shadow-inner hover:shadow-slate-500",{"bg-white":!state.viewMode,"bg-slate-700":state.viewMode})}>
       <Link href={item.url?item.url:""} className="h-full inline-block">
         <img 
-          src={"https://raritysniper.com/"+item.img} 
+          src={item.img} 
           alt="nft image" 
           className=" object-cover w-full  rounded-xl" 
         />
