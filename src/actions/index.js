@@ -4,7 +4,7 @@ import config from '../config/index'
 
 export const getData = (date) => {
   return new Promise(async(resolve, reject) => {
-    const response = await fetch('https://nft-scraping-app-backend.onrender.com?saleDate=' + moment(date).format("YYYY")+'-'+moment(date).format("MM")+'-'+moment(date).format("DD"), {
+    const response = await fetch('https://nft-scraping-app-backend.onrender.com/getData?saleDate=' + moment(date).format("YYYY")+'-'+moment(date).format("MM")+'-'+moment(date).format("DD"), {
       method: 'get',
       headers: {
         "Content-Type": "application/json",
