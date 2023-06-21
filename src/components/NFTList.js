@@ -50,7 +50,7 @@ const NFTList = ({currentDate, index, data}) => {
         <div className='text-xl text-center'>{data&&data.length} drops</div>
       </div>
      </div>
-      <div className='grid grid-cols-2 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 gap-4'>
+      <div className='grid grid-cols-1 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 gap-4'>
         {data&& data.map((item, index1)=> (
           <div key={index1}>
             <NFTListItem item={item}/>
