@@ -11,11 +11,11 @@ export default function ContextProvider({children}) {
       data: data1, 
       search: '',   
       currentPage: 1, 
-      pageSize: 4, 
+      pageSize: 5 , 
       numberOfPage: 1
     });
   const setData = (data) => {
-    setState((state) => ({...state, data: cloneDeep(data)}));
+    setState((state) => ({...state, data: cloneDeep(data), numberOfPage: parseInt(data.length /4)+1}));
   }
   const setSearchWord = (word) =>  {
     setState((state) => ({...state, search: word}));
@@ -26,11 +26,12 @@ export default function ContextProvider({children}) {
   const setPageSize = (size) => {   
     setState((state) => ({...state, pageSize: size}));
   }
-  const setNumberOfPage = (number) => {
-    setState((state) => ({...state, numberOfPage: number}));
+  const setNumberOfPage = (num) => {
+    setState(state => ({...state, numberOfPage: num}))
   }
+
   return (
-    <AppContext.Provider value={{state, setState, setData, setSearchWord, setCurrentPage, setPageSize, setNumberOfPage}}>
+    <AppContext.Provider value={{state, setState, setData, setSearchWord, setCurrentPage, setPageSize,setNumberOfPage}}>
       {children}
     </AppContext.Provider>
   )

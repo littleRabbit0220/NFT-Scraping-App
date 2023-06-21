@@ -7,16 +7,19 @@ import { useContext, useEffect, useState } from "react";
 import { AppContext } from "@/context/ContextProvider";
 import DatePicker from "./DatePicker";
 import { getData } from "@/actions";
+import { cloneDeep } from "lodash";
 
 const MainContent = ({modalVisible}) => {
-  const { state } = useContext(AppContext);
+  const { state , setData } = useContext(AppContext);
   const [ calendarVisible, setCalendarVislble ] = useState(false);
   const [ currentDate, setCurrentDate ] = useState(new Date(Date.now()));
 
   useEffect(() => {
     if(currentDate !== undefined && currentDate !== null) {
       getData(currentDate)
-      .then(data => console.log(data))
+      .then(data => {
+        setData(cloneDeep(data));
+      })
       .catch(err => console.log(err));
     }
   }, [currentDate]);
@@ -38,11 +41,11 @@ const MainContent = ({modalVisible}) => {
             <Search viewMode={state.viewMode}/>
           </div>  
           <div className="flex flex-row justify-between items-center">
-            <div className="p-5 cursor-pointer hover:text-blue-500 hidden md:block"><i className="fa fa-arrow-circle-left" style={{fontSize:50}}></i></div>
+            {/* <div className="p-5 cursor-pointer hover:text-blue-500 hidden md:block"><i className="fa fa-arrow-circle-left" style={{fontSize:50}}></i></div> */}
             <NFTList
               currentDate={currentDate}
             />
-            <div className="p-5 cursor-pointer hover:text-blue-500 hidden md:block"><i className="fa fa-arrow-circle-right" style={{fontSize:50}}></i></div>
+            {/* <div className="p-5 cursor-pointer hover:text-blue-500 hidden md:block"><i className="fa fa-arrow-circle-right" style={{fontSize:50}}></i></div> */}
           </div>
           <Navigation/>
         </div>
