@@ -10,7 +10,7 @@ const DatePicker = ({calendarVisible, setCalendarVisible, currentDate, setCurren
     <div className=" z-20 overflow-visible">
       <input 
         type="text" 
-        className={classnames("relative focus:outline-blue-500 mb-1 text-xl p-2 rounded",{"bg-slate-700":state.viewMode})} 
+        className={classnames("relative focus:outline-blue-500 mb-1 text-xl p-2 rounded w-full sm: mb-5",{"bg-slate-700":state.viewMode})} 
         value={"Drop Date: " + moment(currentDate).format('YYYY-MM-DD')}
         onClick={() => setCalendarVisible(true)}  
       />

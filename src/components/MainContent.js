@@ -32,7 +32,7 @@ const MainContent = ({modalVisible}) => {
             <h3 className="text-3xl py-2">Future NFTs</h3>
             <p className="text-2xl py-2">NFT Scraping App shows nfts that will appear in the future.</p>
           </div>
-          <div className="p-2 flex flex-row justify-around mb-3">
+          <div className="p-2 flex flex-col justify-around mb-3 sm:flex-row">
             <DatePicker 
               calendarVisible={calendarVisible} 
               setCalendarVisible={(visible) => setCalendarVislble(visible)}
